@@ -33,3 +33,7 @@ CREATE TABLE COMPOSE(
     PRIMARY KEY (id_compositeur,id_musique);
     PRIMARY KEY (id_compositeur,id_musique);
 )
+
+CREATE VIEW v1 AS(
+    SELECT genre, COUNT(id_musique) AS "nb_musiques", COUNT(id_compositeur) AS "nb_compositeurs" FROM Musique;
+);
