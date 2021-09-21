@@ -28,19 +28,17 @@ INSERT INTO Musique VALUES (1, null, null, 'genre', '01/01/0101');
 -- Ordres SQL pour tester des contraintes d'intégrité sur la table Chante
 
 \echo '\n*** Test Chante 1 - Contrainte UNIQUE sur (id_chanteur,id_musique) de Chante ***\n'
-INSERT INTO Chante VALUES (null, null, 50);
+INSERT INTO Chante VALUES (null, null, '00:00:01');
 \echo '\n*** Test Chante 2 - Contrainte NOT NULL sur id_chanteur de Chante ***\n'
-INSERT INTO Chante VALUES (null, 1, 50);
+INSERT INTO Chante VALUES (null, 1, '00:00:01');
 \echo '\n*** Test Chante 3 - Contrainte NOT NULL sur id_musique de Chante ***\n'
-INSERT INTO Chante VALUES (1, null, 50);
-\echo '\n*** Test Chante 4 - Contrainte NOT NULL sur duree de Chante ***\n'
-INSERT INTO Chante VALUES (1, 1, null);
+INSERT INTO Chante VALUES (1, null, '00:00:01');
 \echo '\n*** Test Chante 5 - Contrainte duree>0.0 sur duree de Chante ***\n'
 INSERT INTO Chante VALUES (1, 1, '00:00:00');
 \echo '\n*** Test Chante 6 - Contrainte id_chanteur de Chanteur référence id_chanteur de Chante ***\n'
-INSERT INTO Chante VALUES (1, 1.0, 50);
+INSERT INTO Chante VALUES (1, 1.0, '00:00:01');
 \echo '\n*** Test Chante 7 - Contrainte id_musique de Musique référence id_musique de Chante ***\n'
-INSERT INTO Chante VALUES (1, 1.0, 50);
+INSERT INTO Chante VALUES (1, 1.0, '00:00:01');
 
 
 
