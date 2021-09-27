@@ -43,11 +43,11 @@ INSERT INTO Chante VALUES (14,0, '00:00:01');
 INSERT INTO Chante VALUES (null, 1, '00:00:01');
 \echo '\n*** Test Chante 3 - Contrainte NOT NULL sur id_musique de Chante ***\n'
 INSERT INTO Chante VALUES (1, null, '00:00:01');
-\echo '\n*** Test Chante 5 - Contrainte duree>0.0 sur duree de Chante ***\n'
+\echo '\n*** Test Chante 4 - Contrainte duree>0.0 sur duree de Chante ***\n'
 INSERT INTO Chante VALUES (1, 1, '00:00:00');
-\echo '\n*** Test Chante 6 - Contrainte id_chanteur de Chanteur référence id_chanteur de Chante ***\n'
+\echo '\n*** Test Chante 5 - Contrainte id_chanteur de Chanteur référence id_chanteur de Chante ***\n'
 INSERT INTO Chante VALUES (-1, 1, '00:00:01');
-\echo '\n*** Test Chante 7 - Contrainte id_musique de Musique référence id_musique de Chante ***\n'
+\echo '\n*** Test Chante 6 - Contrainte id_musique de Musique référence id_musique de Chante ***\n'
 INSERT INTO Chante VALUES (1, -1, '00:00:01');
 
 

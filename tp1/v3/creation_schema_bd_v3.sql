@@ -37,7 +37,7 @@ CREATE VIEW v1 AS(
 );
 
 -- Fonction permettant de tester une insertion ou une mise à jour d'un tuple de la table CHANTEUR
--- Voir les tests : Test CHANTEUR 1 / Test CHANTEUR 3 / Test CHANTEUR 4 / Test CHANTEUR 5 / Test CHANTEUR 6
+-- Voir les tests : Test CHANTEUR 1 / Test CHANTEUR 3 / Test CHANTEUR 4 / Test CHANTEUR 5 / Test CHANTEUR 6 /Test CHANTEUR
 CREATE OR REPLACE FUNCTION test_chanteur_br_iu() RETURNS trigger AS $$
     BEGIN
         IF NEW.id_chanteur IS NULL THEN
@@ -54,6 +54,9 @@ CREATE OR REPLACE FUNCTION test_chanteur_br_iu() RETURNS trigger AS $$
         END IF;
         IF NEW.id_chanteur<0 THEN
         RAISE EXCEPTION 'id_chanteur ne peut être strictement inférieur à 0 !';
+        END IF;
+        IF length(NEW.ville_naissance)<=0 THEN
+        RAISE EXCEPTION 'la ville de naissance doit être réferencé !';
         END IF;
         RETURN NEW;
     END
@@ -110,7 +113,7 @@ CREATE OR REPLACE FUNCTION test_chante_br_iu() RETURNS trigger AS $$
 $$ LANGUAGE plpgsql;
 
 -- Trigger permettant de tester une insertion ou une mise à jour d'un tuple de la table CHANTE
--- Voir les tests : Test CHANTE 4 / Test CHANTE 5 /Test CHANTE 6
+-- Voir les tests : Test CHANTE 2/ Test CHANTE 3/Test CHANTE 4 / Test CHANTE 5 /Test CHANTE 6
 CREATE TRIGGER trig_chante_br_iu AFTER INSERT OR UPDATE ON CHANTE
     FOR EACH ROW EXECUTE PROCEDURE test_chante_br_iu();
 
