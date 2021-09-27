@@ -30,6 +30,8 @@ INSERT INTO Musique VALUES (1, '', 'nomAlbum', 'genre', '01/01/0101');
 INSERT INTO Musique VALUES (1, null, null, 'genre', '01/01/0101');
 \echo '\n*** Test Musique 6 - Contrainte id_musique>=0 de Musique ***\n'
 INSERT INTO Musique VALUES (-1, 'nomMusique', 'nomAlbum', 'genre', '01/01/0101');
+\echo '\n*** Test Musique 7 - Contrainte date <= CURRENT_DATE de Musique ***\n'
+INSERT INTO Musique VALUES (1, 'nomMusique', 'nomAlbum', 'genre', '01/01/2222');
 
 -- Ordres SQL pour tester des contraintes d'intégrité sur la table Chante
 

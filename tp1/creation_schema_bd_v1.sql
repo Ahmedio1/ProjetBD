@@ -11,7 +11,7 @@ nom VARCHAR(150) NOT NULL ,
 prenom VARCHAR(150) NOT NULL ,
 age INT NULL ,
 ville_naissance VARCHAR(200) DEFAULT NULL
-CHECK (id_chanteur>0)
+CHECK (id_chanteur>=0)
 CHECK(age>0)
 CHECK(LENGTH(ville_naissance)>0));
 
@@ -22,8 +22,9 @@ CREATE TABLE MUSIQUE(
     nom_album VARCHAR(200) DEFAULT NULL,
     genre VARCHAR(150),
     date_sortie DATE DEFAULT NULL,
-    CHECK (id_musique>0),
+    CHECK (id_musique>=0),
     CHECK(LENGTH(nom)>0),
+    CHECK (date_sortie <= CURRENT_DATE),
     UNIQUE(nom,nom_album)
 );
 
