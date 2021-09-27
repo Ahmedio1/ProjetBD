@@ -1,0 +1,102 @@
+*** Test Chanteur 1 - Contrainte NOT NULL sur id_chanteur de Chanteur ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:7: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « id_chanteur » dans la relation « chanteur »
+DÉTAIL : La ligne en échec contient (null, Nom, Prénom, null, null).
+
+*** Test Chanteur 2 - Contrainte UNIQUE sur id_chanteur de Chanteur ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:9: ERREUR:  la valeur d'une clé dupliquée rompt la contrainte unique « chanteur_pkey »
+DÉTAIL : La clé « (id_chanteur)=(1) » existe déjà.
+
+*** Test Chanteur 3 - Contrainte NOT NULL sur nom de Chanteur ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:11: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « nom » dans la relation « chanteur »
+DÉTAIL : La ligne en échec contient (1, null, Prénom, null, null).
+
+*** Test Chanteur 4 - Contrainte NOT NULL sur prénom de Chanteur ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:13: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « prenom » dans la relation « chanteur »
+DÉTAIL : La ligne en échec contient (1, Nom, null, null, null).
+
+*** Test Chanteur 5 - Contrainte age>0 sur age de Chanteur ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:15: ERREUR:  la nouvelle ligne de la relation « chanteur » viole la contrainte de vérification « chanteur_age_check »
+DÉTAIL : La ligne en échec contient (1, Nom, Prénom, 0, null).
+
+*** Test Chanteur 6 - Contrainte id_chanteur>=0 de Chanteur ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:17: ERREUR:  la nouvelle ligne de la relation « chanteur » viole la contrainte de vérification « chanteur_id_chanteur_check »
+DÉTAIL : La ligne en échec contient (-1, Nom, Prénom, null, null).
+
+*** Test Chanteur 7 - Contrainte length(ville_naissance)>0 ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:19: ERREUR:  la nouvelle ligne de la relation « chanteur » viole la contrainte de vérification « chanteur_ville_naissance_check »
+DÉTAIL : La ligne en échec contient (1, Nom, Prenom, null, ).
+
+*** Test Musique 1 - Contrainte UNIQUE sur id_musique de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:24: ERREUR:  la valeur d'une clé dupliquée rompt la contrainte unique « musique_pkey »
+DÉTAIL : La clé « (id_musique)=(1) » existe déjà.
+
+*** Test Musique 2 - Contrainte NOT NULL sur id_musique de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:26: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « id_musique » dans la relation « musique »
+DÉTAIL : La ligne en échec contient (null, nomMusique, nomAlbum, genre, 0101-01-01).
+
+*** Test Musique 3 - Contrainte NOT NULL sur nom de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:28: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « nom » dans la relation « musique »
+DÉTAIL : La ligne en échec contient (1, null, nomAlbum, genre, 0101-01-01).
+
+*** Test Musique 4 - Contrainte length(nom)>0 sur nom de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:30: ERREUR:  la nouvelle ligne de la relation « musique » viole la contrainte de vérification « musique_nom_check »
+DÉTAIL : La ligne en échec contient (1, , nomAlbum, genre, 0101-01-01).
+
+*** Test Musique 5 - Contrainte UNIQUE sur (nom,nom_album) de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:32: ERREUR:  la valeur d'une clé dupliquée rompt la contrainte unique « musique_nom_nom_album_key »
+DÉTAIL : La clé « (nom, nom_album)=(Allumer le feu, Ce que je suis) » existe déjà.
+
+*** Test Musique 6 - Contrainte id_musique>=0 de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:34: ERREUR:  la nouvelle ligne de la relation « musique » viole la contrainte de vérification « musique_id_musique_check »
+DÉTAIL : La ligne en échec contient (-1, nomMusique, nomAlbum, genre, 0101-01-01).
+
+*** Test Musique 7 - Contrainte date <= CURRENT_DATE de Musique ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:36: ERREUR:  la nouvelle ligne de la relation « musique » viole la contrainte de vérification « musique_date_sortie_check »
+DÉTAIL : La ligne en échec contient (1, nomMusique, nomAlbum, genre, 2222-01-01).
+
+*** Test Chante 1 - Contrainte UNIQUE sur (id_chanteur,id_musique) de Chante ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:41: ERREUR:  la valeur d'une clé dupliquée rompt la contrainte unique « chante_pkey »
+DÉTAIL : La clé « (id_chanteur, id_musique)=(14, 0) » existe déjà.
+
+*** Test Chante 2 - Contrainte NOT NULL sur id_chanteur de Chante ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:43: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « id_chanteur » dans la relation « chante »
+DÉTAIL : La ligne en échec contient (null, 1, 00:00:01).
+
+*** Test Chante 3 - Contrainte NOT NULL sur id_musique de Chante ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:45: ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne « id_musique » dans la relation « chante »
+DÉTAIL : La ligne en échec contient (1, null, 00:00:01).
+
+*** Test Chante 5 - Contrainte duree>0.0 sur duree de Chante ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:47: ERREUR:  la nouvelle ligne de la relation « chante » viole la contrainte de vérification « chante_duree_check »
+DÉTAIL : La ligne en échec contient (1, 1, 00:00:00).
+
+*** Test Chante 6 - Contrainte id_chanteur de Chanteur référence id_chanteur de Chante ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:49: ERREUR:  une instruction insert ou update sur la table « chante » viole la contrainte de clé
+étrangère « chante_id_chanteur_fkey »
+DÉTAIL : La clé (id_chanteur)=(-1) n'est pas présente dans la table « chanteur ».
+
+*** Test Chante 7 - Contrainte id_musique de Musique référence id_musique de Chante ***
+
+psql:tp1/v1/tests_contraintes_v1.sql:51: ERREUR:  une instruction insert ou update sur la table « chante » viole la contrainte de clé
+étrangère « chante_id_musique_fkey »
+DÉTAIL : La clé (id_musique)=(-1) n'est pas présente dans la table « musique ».
+
