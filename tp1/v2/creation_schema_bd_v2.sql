@@ -10,7 +10,8 @@ id_chanteur INT,
 nom VARCHAR(150),
 prenom VARCHAR(150),
 age INT,
-ville_naissance VARCHAR(200);
+ville_naissance VARCHAR(200)
+);
 
 DROP TABLE IF EXISTS MUSIQUE;
 CREATE TABLE MUSIQUE(
@@ -18,14 +19,14 @@ CREATE TABLE MUSIQUE(
     nom VARCHAR(200),
     nom_album VARCHAR(200),
     genre VARCHAR(150),
-    date_sortie DATE,
+    date_sortie DATE
 );
 
 DROP TABLE IF EXISTS CHANTE;
 CREATE TABLE CHANTE(
     id_chanteur INT,
     id_musique INT,
-    duree TIME,
+    duree TIME
 );
 
 CREATE VIEW v1 AS(
