@@ -6,39 +6,26 @@ SET search_path to compilation;
 
 DROP TABLE IF EXISTS CHANTEUR;
 CREATE TABLE CHANTEUR(
-id_chanteur INT PRIMARY KEY,
-nom VARCHAR(150) NOT NULL ,
-prenom VARCHAR(150) NOT NULL ,
-age INT NULL ,
-ville_naissance VARCHAR(200) DEFAULT NULL
-CHECK (id_chanteur>=0)
-CHECK(age>0)
-CHECK(LENGTH(ville_naissance)>0));
+id_chanteur INT,
+nom VARCHAR(150),
+prenom VARCHAR(150),
+age INT,
+ville_naissance VARCHAR(200);
 
 DROP TABLE IF EXISTS MUSIQUE;
 CREATE TABLE MUSIQUE(
-    id_musique INT PRIMARY KEY,
-    nom VARCHAR(200) NOT NULL,
-    nom_album VARCHAR(200) DEFAULT NULL,
+    id_musique INT,
+    nom VARCHAR(200),
+    nom_album VARCHAR(200),
     genre VARCHAR(150),
-    date_sortie DATE DEFAULT NULL,
-    CHECK (id_musique>=0),
-    CHECK(LENGTH(nom)>0),
-    CHECK (date_sortie <= CURRENT_DATE),
-    UNIQUE(nom,nom_album)
+    date_sortie DATE,
 );
 
 DROP TABLE IF EXISTS CHANTE;
 CREATE TABLE CHANTE(
-    id_chanteur INT REFERENCES CHANTEUR(id_chanteur)
-                    ON UPDATE CASCADE
-                    ON DELETE CASCADE,
-    id_musique INT REFERENCES MUSIQUE(id_musique)
-                    ON UPDATE CASCADE
-                    ON DELETE CASCADE,
-    duree TIME DEFAULT NULL,
-    CHECK (duree>'00:00:00'),
-    PRIMARY KEY (id_chanteur,id_musique)
+    id_chanteur INT,
+    id_musique INT,
+    duree TIME,
 );
 
 CREATE VIEW v1 AS(
