@@ -1,3 +1,7 @@
+-- DAOUD Ahmed & BERCHE Cyril - 2021
+
+-- Ordres SQL pour insertion dans tables du schéma compilation
+
 INSERT INTO chanteur VALUES
 (0,'Scott','Travis',30,'Houston'),
 (1,'West','Kanye',44,'Atlanta'),

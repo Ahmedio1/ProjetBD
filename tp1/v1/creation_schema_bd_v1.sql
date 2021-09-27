@@ -1,3 +1,7 @@
+-- DAOUD Ahmed & BERCHE Cyril - 2021
+
+-- Ordres SQL pour création du schéma compilation
+
 DROP SCHEMA IF EXISTS compilation CASCADE;
 
 CREATE SCHEMA compilation;
