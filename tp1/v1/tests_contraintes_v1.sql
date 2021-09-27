@@ -29,7 +29,7 @@ INSERT INTO Musique VALUES (1, null, 'nomAlbum', 'genre', '01/01/0101');
 \echo '\n*** Test Musique 4 - Contrainte length(nom)>0 sur nom de Musique ***\n'
 INSERT INTO Musique VALUES (1, '', 'nomAlbum', 'genre', '01/01/0101');
 \echo '\n*** Test Musique 5 - Contrainte UNIQUE sur (nom,nom_album) de Musique ***\n'
-INSERT INTO Musique VALUES (1, null, null, 'genre', '01/01/0101');
+INSERT INTO Musique VALUES (15, 'Allumer le feu', 'Ce que je suis', 'genre', '01/01/0101');
 \echo '\n*** Test Musique 6 - Contrainte id_musique>=0 de Musique ***\n'
 INSERT INTO Musique VALUES (-1, 'nomMusique', 'nomAlbum', 'genre', '01/01/0101');
 \echo '\n*** Test Musique 7 - Contrainte date <= CURRENT_DATE de Musique ***\n'
