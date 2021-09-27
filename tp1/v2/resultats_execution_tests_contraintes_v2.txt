@@ -1,0 +1,75 @@
+﻿*** Test Chanteur 1 - Contrainte NOT NULL sur id_chanteur de Chanteur ***
+
+INSERT 0 1
+
+*** Test Chanteur 2 - Contrainte UNIQUE sur id_chanteur de Chanteur ***
+
+INSERT 0 1
+
+*** Test Chanteur 3 - Contrainte NOT NULL sur nom de Chanteur ***
+
+INSERT 0 1
+
+*** Test Chanteur 4 - Contrainte NOT NULL sur prénom de Chanteur ***
+
+INSERT 0 1
+
+*** Test Chanteur 5 - Contrainte age>0 sur age de Chanteur ***
+
+INSERT 0 1
+
+*** Test Chanteur 6 - Contrainte id_chanteur>=0 de Chanteur ***
+
+INSERT 0 1
+
+*** Test Musique 1 - Contrainte UNIQUE sur id_musique de Musique ***
+
+INSERT 0 1
+
+*** Test Musique 2 - Contrainte NOT NULL sur id_musique de Musique ***
+
+INSERT 0 1
+
+*** Test Musique 3 - Contrainte NOT NULL sur nom de Musique ***
+
+INSERT 0 1
+
+*** Test Musique 4 - Contrainte nom>0 sur nom de Musique ***
+
+INSERT 0 1
+
+*** Test Musique 5 - Contrainte UNIQUE sur (nom,nom_album) de Musique ***
+
+INSERT 0 1
+
+*** Test Musique 6 - Contrainte id_musique>=0 de Musique ***
+
+INSERT 0 1
+
+*** Test Musique 7 - Contrainte date <= CURRENT_DATE de Musique ***
+
+INSERT 0 1
+
+*** Test Chante 1 - Contrainte UNIQUE sur (id_chanteur,id_musique) de Chante ***
+
+INSERT 0 1
+
+*** Test Chante 2 - Contrainte NOT NULL sur id_chanteur de Chante ***
+
+INSERT 0 1
+
+*** Test Chante 3 - Contrainte NOT NULL sur id_musique de Chante ***
+
+INSERT 0 1
+
+*** Test Chante 5 - Contrainte duree>0.0 sur duree de Chante ***
+
+INSERT 0 1
+
+*** Test Chante 6 - Contrainte id_chanteur de Chanteur référence id_chanteur de Chante ***
+
+INSERT 0 1
+
+*** Test Chante 7 - Contrainte id_musique de Musique référence id_musique de Chante ***
+
+INSERT 0 1

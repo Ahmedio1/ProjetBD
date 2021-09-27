@@ -10,9 +10,9 @@ id_chanteur INT PRIMARY KEY,
 nom VARCHAR(150) NOT NULL ,
 prenom VARCHAR(150) NOT NULL ,
 age INT NULL ,
-ville_naissance VARCHAR(200) DEFAULT NULL
-CHECK (id_chanteur>=0)
-CHECK(age>0)
+ville_naissance VARCHAR(200) DEFAULT NULL,
+CHECK (id_chanteur>=0),
+CHECK(age>0),
 CHECK(LENGTH(ville_naissance)>0));
 
 DROP TABLE IF EXISTS MUSIQUE;
