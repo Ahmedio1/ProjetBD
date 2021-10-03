@@ -188,7 +188,7 @@ CREATE OR REPLACE FUNCTION test_musique_ar_iu() RETURNS trigger AS $$
     END
 $$ LANGUAGE plpgsql;
 
--- Trigger permettant de tester une insertion ou une mise à jour d'un tuple de la table CHANTE
+-- Trigger permettant de tester une insertion ou une mise à jour d'un tuple de la table MUSIQUE
 -- Voir les tests : Test MUSIQUE 1 - Test MUSIQUE 5
 CREATE TRIGGER trig_musique_ar_iu AFTER INSERT OR UPDATE ON MUSIQUE
     FOR EACH ROW EXECUTE PROCEDURE test_musique_ar_iu();
