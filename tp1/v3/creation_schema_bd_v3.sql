@@ -137,3 +137,58 @@ $$ LANGUAGE plpgsql;
 -- Voir les tests : Test CHANTE 1
 CREATE TRIGGER trig_chante_ar_iu AFTER INSERT OR UPDATE ON CHANTE
     FOR EACH ROW EXECUTE PROCEDURE test_chante_ar_iu();
+
+-- Fonction permettant de tester une insertion ou une mise à jour d'un tuple de la table MUSIQUE
+-- Voir les tests : Test MUSIQUE 2 / Test MUSIQUE 3 / Test MUSIQUE 4 / Test MUSIQUE 6 / Test MUSIQUE 7
+CREATE OR REPLACE FUNCTION test_musique_br_iu() RETURNS trigger AS $$
+    BEGIN
+        IF NEW.id_musique IS NULL THEN
+        RAISE EXCEPTION 'id_musique de MUSIQUE ne peut pas être NULL !';
+        END IF;
+        IF NEW.id_musique < 0 THEN
+        RAISE EXCEPTION 'id_musique de MUSIQUE ne peut pas être négatif !';
+        END IF;
+        IF NEW.nom IS NULL THEN
+        RAISE EXCEPTION 'nom de MUSIQUE ne peut être NULL !';
+        END IF;
+        IF NEW.date_sortie > CURRENT_DATE THEN
+        RAISE EXCEPTION 'la date ne peut pas être supérieure à la date actuelle !';
+        END IF;
+        IF length(NEW.nom) <= 0 THEN
+            RAISE EXCEPTION 'la longueur de nom de MUSIQUE ne peut être inférieure ou égale à 0 !';
+        END IF;
+        RETURN NEW;
+    END
+$$ LANGUAGE plpgsql;
+
+-- Trigger permettant de tester une insertion ou une mise à jour d'un tuple de la table MUSIQUE
+-- Voir les tests : Test MUSIQUE 2 / Test MUSIQUE 3 / Test MUSIQUE 4 / Test MUSIQUE 6 / Test MUSIQUE 7
+CREATE TRIGGER trig_musique_br_iu BEFORE INSERT OR UPDATE ON MUSIQUE
+    FOR EACH ROW EXECUTE PROCEDURE test_musique_br_iu();
+
+-- Fonction permettant de tester une insertion ou une mise à jour d'un tuple de la table MUSIQUE
+-- Voir les tests : Test MUSIQUE 1 - Test MUSIQUE 5
+CREATE OR REPLACE FUNCTION test_musique_ar_iu() RETURNS trigger AS $$
+    DECLARE
+	nb INTEGER;
+    BEGIN
+        SELECT COUNT(*) INTO nb
+        FROM MUSIQUE
+        WHERE id_musique=NEW.id_musique;
+        IF nb>1 THEN
+        	RAISE EXCEPTION 'Deux tuples de MUSIQUE ne peuvent pas avoir même valeur pour id_musique !';
+        END IF;
+        SELECT COUNT(*) INTO nb
+        FROM MUSIQUE
+        WHERE nom=NEW.nom AND nom_album=NEW.nom_album;
+        IF nb>1 THEN
+        	RAISE EXCEPTION 'Deux tuples de MUSIQUE ne peuvent pas avoir même valeur pour nom et nom_album !';
+        END IF;
+        RETURN NEW;
+    END
+$$ LANGUAGE plpgsql;
+
+-- Trigger permettant de tester une insertion ou une mise à jour d'un tuple de la table CHANTE
+-- Voir les tests : Test MUSIQUE 1 - Test MUSIQUE 5
+CREATE TRIGGER trig_musique_ar_iu AFTER INSERT OR UPDATE ON MUSIQUE
+    FOR EACH ROW EXECUTE PROCEDURE test_musique_ar_iu();
