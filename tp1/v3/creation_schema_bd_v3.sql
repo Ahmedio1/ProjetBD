@@ -129,6 +129,18 @@ CREATE OR REPLACE FUNCTION test_chante_ar_iu() RETURNS trigger AS $$
         IF nb>1 THEN
         	RAISE EXCEPTION 'Deux tuples de CHANTE ne peuvent pas avoir même valeur pour id_chanteur et id_musique !';
         END IF;
+        PERFORM *
+        FROM CHANTEUR
+        WHERE id_chanteur=NEW.id_chanteur;
+        IF NOT FOUND THEN
+        	RAISE EXCEPTION 'id_chanteur de CHANTE ne référence pas id_chanteur de CHANTEUR !';
+        END IF;
+        PERFORM *
+        FROM MUSIQUE
+        WHERE id_musique=NEW.id_musique;
+        IF NOT FOUND THEN
+        	RAISE EXCEPTION 'id_musique de CHANTE ne référence pas id_musique de musique !';
+        END IF;
         RETURN NEW;
     END
 $$ LANGUAGE plpgsql;
