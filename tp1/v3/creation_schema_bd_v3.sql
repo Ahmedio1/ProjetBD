@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION test_chanteur_br_iu() RETURNS trigger AS $$
         RAISE EXCEPTION 'id_chanteur ne peut être strictement inférieur à 0 !';
         END IF;
         IF length(NEW.ville_naissance)<=0 THEN
-        RAISE EXCEPTION 'la ville de naissance doit être réferencé !';
+        RAISE EXCEPTION 'la longueur de la ville de naissance doit être supérieure à 0 !';
         END IF;
         RETURN NEW;
     END
