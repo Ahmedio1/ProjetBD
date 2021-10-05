@@ -1,0 +1,121 @@
+-- Résultats de l'exécution des ordres de tests_v4.sql sur la BD SPORTS21_BDA_v4
+-- Jean-François Condotta - 2021
+
+*** Contenus initiaux des tables SPORT et T_NB_SPORTS_PAR_CATEGORIE ***
+
+ id_sport | nom_sport | categorie 
+----------+-----------+-----------
+(0 rows)
+
+ categorie | nb_sports 
+-----------+-----------
+(0 rows)
+
+INSERT 0 8
+
+*** Contenus de SPORT, T_NB_SPORTS_PAR_CATEGORIE et V_NB_SPORTS_PAR_CATEGORIE après des insertions ***
+
+
+*** SPORT ***
+ id_sport |   nom_sport   |  categorie  
+----------+---------------+-------------
+        0 | Marche        | Athlétisme
+        1 | Rugby         | Collectif
+        2 | Football      | Collectif
+        3 | Karaté        | Art martial
+        4 | Course à pied | Athlétisme
+        5 | VTT           | Cyclisme
+        6 | Judo          | Art martial
+        7 | Volley-ball   | Collectif
+(8 rows)
+
+
+*** T_NB_SPORTS_PAR_CATEGORIE ***
+  categorie  | nb_sports 
+-------------+-----------
+ Art martial |         2
+ Athlétisme  |         2
+ Collectif   |         3
+ Cyclisme    |         1
+(4 rows)
+
+
+*** V_NB_SPORTS_PAR_CATEGORIE ***
+  categorie  | nb_sports 
+-------------+-----------
+ Art martial |         2
+ Athlétisme  |         2
+ Collectif   |         3
+ Cyclisme    |         1
+(4 rows)
+
+DELETE 2
+
+*** Contenus de SPORT, T_NB_SPORTS_PAR_CATEGORIE et V_NB_SPORTS_PAR_CATEGORIE après des suppressions ***
+
+
+*** SPORT ***
+ id_sport |   nom_sport   |  categorie  
+----------+---------------+-------------
+        1 | Rugby         | Collectif
+        2 | Football      | Collectif
+        3 | Karaté        | Art martial
+        4 | Course à pied | Athlétisme
+        6 | Judo          | Art martial
+        7 | Volley-ball   | Collectif
+(6 rows)
+
+
+*** T_NB_SPORTS_PAR_CATEGORIE ***
+  categorie  | nb_sports 
+-------------+-----------
+ Art martial |         2
+ Athlétisme  |         1
+ Collectif   |         3
+(3 rows)
+
+
+*** V_NB_SPORTS_PAR_CATEGORIE ***
+  categorie  | nb_sports 
+-------------+-----------
+ Art martial |         2
+ Athlétisme  |         1
+ Collectif   |         3
+(3 rows)
+
+UPDATE 1
+UPDATE 1
+UPDATE 1
+
+*** Contenus de SPORT, T_NB_SPORTS_PAR_CATEGORIE et V_NB_SPORTS_PAR_CATEGORIE après des updates ***
+
+
+*** SPORT ***
+ id_sport |   nom_sport   |     categorie     
+----------+---------------+-------------------
+        2 | Football      | Collectif
+        4 | Course à pied | Athlétisme
+        7 | Volley-ball   | Collectif
+       20 | Rugby         | Collectif
+        3 | Karaté        | Collectif
+        6 | Judo          | Super Art Martial
+(6 rows)
+
+
+*** T_NB_SPORTS_PAR_CATEGORIE ***
+     categorie     | nb_sports 
+-------------------+-----------
+ Athlétisme        |         1
+ Collectif         |         4
+ Super Art Martial |         1
+(3 rows)
+
+
+*** V_NB_SPORTS_PAR_CATEGORIE ***
+     categorie     | nb_sports 
+-------------------+-----------
+ Athlétisme        |         1
+ Collectif         |         4
+ Super Art Martial |         1
+(3 rows)
+
