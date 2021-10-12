@@ -32,12 +32,15 @@ ORDER BY categorie;
 
 -- Fonction permettant de mettre à jour la table T_NB_SPORT_PAR_CATEGORIE après une insertion d'un tuple dans la table SPORT.
 CREATE OR REPLACE FUNCTION maj_t_nb_sports_par_categorie_ar_i() RETURNS trigger AS $$
-	DECLARE
-    BEGIN
-
-  -- A REMPLIR
-
-    END;
+	BEGIN
+	UPDATE T_NB_SPORTS_PAR_CATEGORIE
+	SET nb_sports = nb_sports + 1 
+	WHERE categorie = NEW.categorie;
+	IF NOT found THEN
+		INSERT INTO T_NB_SPORTS_PAR_CATEGORIE VALUES(NEW.categorie, 1);
+	END IF;
+	RETURN NULL;
+    END
 $$ LANGUAGE plpgsql;
 
 -- Fonction permettant de mettre à jour la table T_NB_SPORT_PAR_CATEGORIE après une insertion d'un tuple dans la table SPORT.
