@@ -52,9 +52,17 @@ CREATE OR REPLACE FUNCTION maj_t_nb_sports_par_categorie_ar_d() RETURNS trigger 
 	DECLARE
 	nb INT;
     BEGIN
-
-	-- A REMPLIR
-	
+	    SELECT nb_sports into nb
+	    FROM t_nb_sports_par_categorie
+	    WHERE categorie=new.categorie;
+	    IF (nb=1) THEN
+        DELETE FROM t_nb_sports_par_categorie
+        WHERE categorie=new.categorie;
+	    ELSE
+        UPDATE T_NB_SPORTS_PAR_CATEGORIE
+        SET nb_sports = nb_sports - 1
+        WHERE categorie=new.categorie;
+    end if;
     RETURN NULL;
     END;
 $$ LANGUAGE plpgsql;
@@ -63,18 +71,3 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER trig_sport_ar_d AFTER DELETE ON SPORT
     FOR EACH ROW EXECUTE PROCEDURE maj_t_nb_sports_par_categorie_ar_d();
 
--- Fonction permettant de mettre à jour la table T_NB_SPORT_PAR_CATEGORIE après une maj d'un tuple dans la table SPORT.
-CREATE OR REPLACE FUNCTION maj_t_nb_sports_par_categorie_ar_u() RETURNS trigger AS $$
-	DECLARE
-	nb INT;
-    BEGIN
-
-    -- A REMPLIR
-    
-    RETURN NULL;
-    END;
-$$ LANGUAGE plpgsql;
-
--- Fonction permettant de mettre à jour la table T_NB_SPORT_PAR_CATEGORIE après une insertion d'un tuple dans la table SPORT.
-CREATE TRIGGER trig_sport_ar_u AFTER UPDATE ON SPORT
-    FOR EACH ROW EXECUTE PROCEDURE maj_t_nb_sports_par_categorie_ar_u();
